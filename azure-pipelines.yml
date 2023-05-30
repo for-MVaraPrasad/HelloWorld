@@ -28,6 +28,7 @@ steps:
     configuration: '$(buildConfiguration)'
 - task: CopyFiles@2
   inputs:
+    flattenFolders: true 
     Contents: '**\*.exe'
     TargetFolder: '$(Build.ArtifactStagingDirectory)\binaries'
 - task: PublishBuildArtifacts@1
