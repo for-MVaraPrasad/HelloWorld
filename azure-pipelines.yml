@@ -46,6 +46,6 @@ steps:
 - task: ExtractFiles@1
   inputs:
     archiveFilePatterns: '**/*.zip'
-    destinationFolder: '$(Build.ArtifactStagingDirectory)'
+    destinationFolder: '$(agent.builddirectory)'
     cleanDestinationFolder: true
     overwriteExistingFiles: false
