@@ -46,7 +46,7 @@ steps:
 - task: ExtractFiles@1
   inputs:
     flattenFolders: true
-    archiveFilePatterns: '**/*.zip'
+    archiveFilePatterns: 'D:\a\1\a\11.zip'
     destinationFolder: '$(agent.builddirectory)'
     cleanDestinationFolder: true
     overwriteExistingFiles: false
