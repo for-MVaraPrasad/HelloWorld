@@ -31,22 +31,17 @@ steps:
     flattenFolders: true 
     Contents: '**\*.exe'
     TargetFolder: '$(Build.ArtifactStagingDirectory)\binaries'
+
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.ArtifactStagingDirectory)\binaries'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'drop'
     publishLocation: 'Container'
-- task: ArchiveFiles@2
-  inputs:
-    flattenFolders: true
-    rootFolderOrFile: '$(Build.BinariesDirectory)'
-    includeRootFolder: true
-    archiveType: 'zip'
-    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
-    replaceExistingArchive: true
-- task: ExtractFiles@1
-  inputs:
-    archiveFilePatterns: '**\*.zip'
-    destinationFolder: '$(agent.builddirectory)'
-    cleanDestinationFolder: true
-    overwriteExistingFiles: false
