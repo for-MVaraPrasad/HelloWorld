@@ -38,6 +38,7 @@ steps:
     publishLocation: 'Container'
 - task: ArchiveFiles@2
   inputs:
+    flattenFolders: true
     rootFolderOrFile: '$(Build.BinariesDirectory)'
     includeRootFolder: true
     archiveType: 'zip'
